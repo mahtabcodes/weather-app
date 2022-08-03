@@ -1,0 +1,138 @@
+body {
+  background-color: #2b2b3e;
+  text-transform: capitalize;
+}
+.container {
+  max-width: 350px;
+  height: 500px;
+  background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/040/668/original/partially-cloudy.jpg?1658007825);
+  background-size: 120%;
+  background-repeat: no-repeat;
+  margin: 100px auto;
+  padding: 0;
+  border-radius: 10px;
+  box-shadow: 3px 3px 10px #848b9b;
+  position: relative;
+}
+#current {
+  top: 0;
+  width: 65px;
+  right: 0;
+  margin: 0;
+  border-radius: 10px 0px 0px 40px;
+  text-align: center;
+  border: none;
+  height: 30px;
+  opacity: 0.6;
+  transition: all 200ms ease-in-out;
+  box-shadow: 3px 7px 5px #848b9b;
+}
+#search-form {
+  display: inline;
+}
+.searchBar {
+  top: 0;
+  width: 210px;
+  left: 0;
+
+  text-align: center;
+  border: none;
+  height: 30px;
+  opacity: 0.5;
+  transition: all 200ms ease-in-out;
+  box-shadow: -3px 7px 5px #848b9b;
+}
+.searchBar:hover {
+  opacity: 0.7;
+}
+#search {
+  top: 0;
+  width: 65px;
+  right: 0;
+  margin: 0;
+  border-radius: 0 10px 40px 0;
+  text-align: center;
+  border: none;
+  height: 30px;
+  opacity: 0.6;
+  transition: all 200ms ease-in-out;
+  box-shadow: 3px 7px 5px #848b9b;
+}
+button:hover {
+  opacity: 0.8;
+}
+.today {
+  color: black;
+  padding: 15px 20px;
+}
+.day-date-time {
+  font-size: 15px;
+}
+.extraInfo {
+  padding: 15px 0px 15px 20px;
+  font-size: 15px;
+  background-color: rgba(124, 121, 121, 0.2);
+  border-radius: 5px;
+  box-shadow: -3px 3px 5px #848b9b;
+}
+.currentWeather {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 54px;
+}
+.weather-icon {
+  font-size: 80px;
+  display: block;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.weatherEmojiToday {
+  width: 160px;
+  transition: all 200ms ease-in-out;
+  opacity: 1;
+}
+
+.weather {
+  font-weight: 600;
+}
+.accordion {
+  width: 350px;
+  opacity: 0.6;
+  box-shadow: 5px -5px 8px #848b98;
+  position: relative;
+  border-radius: 10px;
+}
+.accordion-item-header {
+  text-align: center;
+  height: 30px;
+  position: relative;
+}
+.accordion-item-header::after {
+  font-size: 20px;
+  font-weight: 900;
+  position: absolute;
+  right: 120px;
+  transition: transform 0.2s ease-in-out;
+}
+.accordion-item-header .active ::after {
+  transform: rotate(180deg);
+}
+.accordion-item-body {
+  position: relative;
+  overflow: hidden;
+  transition: 0.5s;
+  overflow-y: auto;
+}
+.accordion-img {
+  width: 20px;
+  margin-left: 10px;
+}
+.week-days {
+  background-color: rgba(179, 176, 176, 0.8);
+  border-radius: 40px;
+  padding: 10px;
+  margin: 2px 10px;
+}
