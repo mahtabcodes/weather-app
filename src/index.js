@@ -1,15 +1,3 @@
-//accordion
-const accordionItemHeader = document.querySelector(".accordion-item-header");
-accordionItemHeader.addEventListener("click", (event) => {
-  accordionItemHeader.classList.toggle("active");
-  const accordionItemBody = accordionItemHeader.nextElementSibling;
-  if (accordionItemHeader.classList.contains("active")) {
-    accordionItemBody.style.maxHeight = accordionItemBody.scrollHeight + "-px";
-  } else {
-    accordionItemBody.style.maxHeight = 0;
-  }
-});
-
 //real time
 let now = new Date();
 let dateInput = document.querySelector("#date-real-time");
