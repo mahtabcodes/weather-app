@@ -1,33 +1,35 @@
 //real time
-let now = new Date();
-let dateInput = document.querySelector("#date-real-time");
-let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let day = days[now.getDay()];
-let months = [
-  "Jan",
-  "Feb",
-  "March",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-let month = months[now.getMonth()];
-let date = now.getDate();
-let hour = now.getHours();
-if (hour < 10) {
-  hour = `0${hour}`;
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
+  let dateInput = document.querySelector("#date-real-time");
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[now.getDay()];
+  let months = [
+    "Jan",
+    "Feb",
+    "March",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let month = months[now.getMonth()];
+  let date = now.getDate();
+  let hour = now.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  return `${day} ${month} ${date} <br/> Last updated: ${hour}:${minutes}`;
 }
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-dateInput.innerHTML = `${day} ${month} ${date} <br/> ${hour}:${minutes}`;
 
 //default city
 let city = document.querySelector("#city");
@@ -58,6 +60,8 @@ function showTemperature(response) {
   let apiWindSpeed = response.data.wind.speed;
   windSpeed.innerHTML = apiWindSpeed;
   city.innerHTML = response.data.name;
+  let dateElement = document.querySelector("#date-real-time");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 axios.get(`${apiUrl}&q=${cityC}&appid=${apiKey}`).then(showTemperature);
 
