@@ -1,7 +1,6 @@
 //real time
 function formatDate(timestamp) {
   let now = new Date(timestamp);
-  let dateInput = document.querySelector("#date-real-time");
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let day = days[now.getDay()];
   let months = [
@@ -28,7 +27,7 @@ function formatDate(timestamp) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  return `${day} ${month} ${date} <br/> Last updated: ${hour}:${minutes}`;
+  return `${day}, ${month} ${date} <br/> Last updated: ${hour}:${minutes}`;
 }
 
 //default city
