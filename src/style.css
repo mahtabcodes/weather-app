@@ -109,6 +109,15 @@ p {
 .weather {
   font-weight: 600;
 }
+
+#unit .active {
+  color: black;
+  text-decoration: none;
+  cursor: default;
+}
+#unit .active:hover {
+  text-decoration: none;
+}
 .forecast {
   margin-bottom: 10px;
 }
