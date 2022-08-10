@@ -1,5 +1,6 @@
 body {
-  background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/039/009/original/da66c66816af97be0733c607976cb7ae.jpg?1656514016);
+  background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/043/275/original/pale-purple-aesthetic-clouds-v61firniexgzagfy.jpg?1660168734);
+  background-size: cover;
 }
 
 .container {
@@ -10,7 +11,7 @@ body {
   padding: 5px;
   padding-top: 10px;
   border-radius: 10px;
-  box-shadow: inset 0 0 10px black;
+  box-shadow: inset 0 0 15px black;
   position: relative;
 }
 #current {
@@ -22,7 +23,7 @@ body {
   text-align: center;
   border: none;
   height: 30px;
-  background-color: rgba(124, 121, 121, 0.6);
+  background-color: #f7dcd1;
   transition: all 200ms ease-in-out;
   box-shadow: inset 0 0 8px rgb(48, 48, 48);
 }
@@ -40,6 +41,7 @@ body {
   opacity: 0.4;
   transition: all 200ms ease-in-out;
   box-shadow: 0 0 10px #848b9b;
+  border: solid 3px#b88a82;
 }
 .searchBar:hover {
   opacity: 0.7;
@@ -53,7 +55,7 @@ body {
   text-align: center;
   border: none;
   height: 30px;
-  background-color: rgba(124, 121, 121, 0.6);
+  background-color: #f7dcd1;
   transition: all 200ms ease-in-out;
   box-shadow: inset 0 0 8px rgb(48, 48, 48);
 }
@@ -84,7 +86,7 @@ button:hover {
   display: block;
   margin: 0 auto;
   text-align: center;
-  padding-top: 50px;
+  padding-top: 25px;
   padding-bottom: 30px;
 }
 #description::first-letter {
@@ -108,8 +110,14 @@ p {
 
 .weather {
   font-weight: 600;
+  font-size: 25px;
 }
 
+#unit {
+  position: relative;
+  font-size: 12px;
+  top: -10px;
+}
 #unit .active {
   color: black;
   text-decoration: none;
@@ -126,7 +134,7 @@ p {
   margin-left: 10px;
 }
 .week-days {
-  background-color: rgba(179, 176, 176, 0.4);
+  background-color: #adafc4;
   border-radius: 10px;
   padding: 10px;
   margin: 3px 10px;
