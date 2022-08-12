@@ -31,7 +31,12 @@ function formatDate(timestamp) {
 }
 
 //display forecast
-function displayForecast() {
+function getForecast(coordinates) {
+  let apiKey = "53f345a7516686ddeb655cbd7717ac87";
+  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}}&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
+}
+function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "<div>";
   let days = ["Thu", "Fri", "sat", "sun", "mon", "Tue"];
@@ -50,6 +55,7 @@ function displayForecast() {
   });
   forecastHTML = forecastHTML + "</div>";
   forecastElement.innerHTML = forecastHTML;
+  console.log(response);
 }
 
 //default city
@@ -88,6 +94,7 @@ function showTemperature(response) {
     "src",
     `./emoji/${response.data.weather[0].icon}.png`
   );
+  getForecast(response.data.coord);
 }
 axios.get(`${apiUrl}&q=${cityC}&appid=${apiKey}`).then(showTemperature);
 
