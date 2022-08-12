@@ -30,6 +30,28 @@ function formatDate(timestamp) {
   return `${day}, ${month} ${date} <br/> Last updated: ${hour}:${minutes}`;
 }
 
+//display forecast
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = "<div>";
+  let days = ["Thu", "Fri", "sat", "sun", "mon", "Tue"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+        <div class="forecast-division row">
+          <div class="forecast-date col-4">${day}</div>
+          <img src="emoji/01d.png" alt="sunny" class="forecast-icon col4" />
+          <span class="forecast-temp col-4">
+            <span class="forecast-temp-max">20</span>°c ~
+            <span class="forecast-temp-min">10</span>°c
+          </span>
+        </div>`;
+  });
+  forecastHTML = forecastHTML + "</div>";
+  forecastElement.innerHTML = forecastHTML;
+}
+
 //default city
 let city = document.querySelector("#city");
 let cityC = city.innerHTML;
@@ -37,7 +59,6 @@ let apiKey = "c7b5ae0ee7938381fd83d5fdfc195c15";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?units=metric`;
 
 function showTemperature(response) {
-  console.log(response.data);
   let temperature = Math.round(response.data.main.temp);
   document.querySelector("#temp-center").innerHTML = temperature;
   cTemp = response.data.main.temp;
@@ -129,3 +150,4 @@ celsiusLink.addEventListener("click", showTempC);
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", search);
+displayForecast();
