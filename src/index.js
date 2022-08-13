@@ -29,29 +29,43 @@ function formatDate(timestamp) {
   }
   return `${day}, ${month} ${date} <br/> Last updated: ${hour}:${minutes}`;
 }
+function formatDay(timestamp) {
+  let date = new date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
 
 //display forecast
 function getForecast(coordinates) {
   let apiKey = "c7b5ae0ee7938381fd83d5fdfc195c15";
-  let apiUrl = `https://api.openweathermap.org/data/3.0/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}}&appid=${apiKey}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = "<div>";
-  let days = ["Thu", "Fri", "sat", "sun", "mon", "Tue"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 7 && index !== 0) {
+      forecastHTML =
+        forecastHTML +
+        `
         <div class="forecast-division row">
-          <div class="forecast-date col-4">${day}</div>
-          <img src="emoji/01d.png" alt="sunny" class="forecast-icon col4" />
+          <div class="forecast-date col-4">${formatDay(forecastDay.dt)}</div>
+          <img src="emoji/${
+            forecastDay.weather[0].icon
+          }.png" alt="sunny" class="forecast-icon col4" />
           <span class="forecast-temp col-4">
-            <span class="forecast-temp-max">20</span>°c ~
-            <span class="forecast-temp-min">10</span>°c
+            <span class="forecast-temp-max">${Math.round(
+              forecastDay.temp.max
+            )}</span>°c ~
+            <span class="forecast-temp-min">${Math.round(
+              forecastDay.temp.min
+            )}</span>°c
           </span>
         </div>`;
+    }
   });
   forecastHTML = forecastHTML + "</div>";
   forecastElement.innerHTML = forecastHTML;
@@ -96,6 +110,7 @@ function showTemperature(response) {
   );
   console.log(response.data);
   getForecast(response.data.coord);
+  console.log(response.data.coord);
 }
 axios.get(`${apiUrl}&q=${cityC}&appid=${apiKey}`).then(showTemperature);
 
